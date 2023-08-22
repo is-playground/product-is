@@ -28,7 +28,7 @@ echo "=========================================================="
 echo "Cloning product-is"
 echo "=========================================================="
 
-git clone https://github.com/wxo2/product-is
+git clone https://github.com/risekite/product-is
 
 if [ "$REPO" = "product-is" ]; then
 
