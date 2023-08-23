@@ -152,11 +152,8 @@ else
     export JAVA_HOME=$JAVA_8_HOME
   fi
 
-  if [ "$REPO" = "carbon-kernel" ]; then
-    mvn clean install -Dmaven.test.skip=true --batch-mode | tee mvn-build.log
-  else
-    mvn clean install --batch-mode | tee mvn-build.log
-  fi
+  
+  mvn clean install -Dmaven.test.skip=true --batch-mode | tee mvn-build.log
 
   echo ""
   echo "Dependency repo $REPO build complete."
