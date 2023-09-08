@@ -21,8 +21,6 @@
         <artifactId>wso2</artifactId>
         <version>1.2</version>
     </parent>
-
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.is</groupId>
     <artifactId>identity-server-parent</artifactId>
