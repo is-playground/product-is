@@ -29,7 +29,7 @@ echo "Cloning product-is"
 echo "=========================================================="
 
 # git clone https://github.com/wso2/product-is
-git clone -b tenanted-urls --single-branch https://github.com/is-playground/product-is
+git clone -b tenanted-urls-1 --single-branch https://github.com/is-playground/product-is
 
 if [ "$REPO" = "product-is" ]; then
 
