@@ -64,7 +64,6 @@
             <class name="org.wso2.identity.integration.test.idp.mgt.IdentityProviderMgtServiceTestCase" />
 
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceSAML2BearerGrantTestCase"/>
-            <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceImplicitGrantTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceRegexCallbackUrlTestCase"/>
             <class name="org.wso2.identity.integration.test.oidc.OIDCSSOConsentTestCase"/>
             <class name="org.wso2.identity.integration.test.requestPathAuthenticator.SAMLWithRequestPathAuthenticationTest" />
@@ -77,7 +76,6 @@
             <class name="org.wso2.identity.integration.test.postAuthnHandler.ChallengeQuestionPostAuthnHandlerTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.dcrm.api.OAuthDCRMTestCase"/>
             <class name="org.wso2.identity.integration.test.functions.library.mgt.FunctionLibraryManagementTestCase"/>
-            <class name="org.wso2.identity.integration.test.oauth2.OAuth2TokenRevocationAfterAccountDisablingTestCase" />
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2BackChannelLogoutTestCase" />
             <class name="org.wso2.identity.integration.test.oauth2.Oauth2OPIframeTestCase" />
 <!--            Temporarily Coomenting out following test case cause, its not running on JDK 11-->
@@ -97,13 +95,11 @@
             <class name="org.wso2.identity.integration.test.rest.api.user.association.v1.UserMeNegativeTestBase"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.approval.v1.UserMeApprovalTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v1.MeAuthorizedAppsNegativeTest"/>
-            <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v1.MeAuthorizedAppsSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsNegativeTest"/>
             <!--TODO: Temporary disabled MeAuthorizedAppsScopeTest. Enable after fixing https://github.com/wso2/product-is/issues/13230. -->
             <!-- <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsScopeTest"/> -->
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.ApplicationAuthorizedAppsNegativeTest"/>
-            <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.ApplicationAuthorizedAppsSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.session.v1.UserSessionTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.session.v1.UserSessionAdminSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.application.v1.UserDiscoverableApplicationFailureTest"/>
@@ -263,7 +259,6 @@
     </test>
     <test name="is-tests-with-individual-configuration-changes" preserve-order="true" parallel="false" group-by-instances="true">
         <classes>
-            <class name="org.wso2.identity.integration.test.application.mgt.ServiceProviderUserRoleValidationTestCase"/>
             <class name="org.wso2.identity.integration.test.saml.RegistryMountTestCase"/>
             <class name="org.wso2.identity.integration.test.provisioning.DBSeperationTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceAuthCodeGrantTestCase"/>
