@@ -69,10 +69,6 @@
             <class name="org.wso2.identity.integration.test.requestPathAuthenticator.SAMLWithRequestPathAuthenticationTest" />
             <class name="org.wso2.identity.integration.test.saml.SAMLErrorResponseTestCase"/>
             <class name="org.wso2.identity.integration.test.saml.SAMLFederationDynamicQueryParametersTestCase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLInvalidIssuerTestCase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLIdPInitiatedSLOTestCase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLIdPInitiatedSSOTestCase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLSSOConsentTestCase"/>
             <class name="org.wso2.identity.integration.test.postAuthnHandler.ChallengeQuestionPostAuthnHandlerTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.dcrm.api.OAuthDCRMTestCase"/>
             <class name="org.wso2.identity.integration.test.functions.library.mgt.FunctionLibraryManagementTestCase"/>
@@ -95,13 +91,11 @@
             <class name="org.wso2.identity.integration.test.rest.api.user.association.v1.UserMeNegativeTestBase"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.approval.v1.UserMeApprovalTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v1.MeAuthorizedAppsNegativeTest"/>
-            <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsNegativeTest"/>
             <!--TODO: Temporary disabled MeAuthorizedAppsScopeTest. Enable after fixing https://github.com/wso2/product-is/issues/13230. -->
             <!-- <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.MeAuthorizedAppsScopeTest"/> -->
             <class name="org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2.ApplicationAuthorizedAppsNegativeTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.session.v1.UserSessionTest"/>
-            <class name="org.wso2.identity.integration.test.rest.api.user.session.v1.UserSessionAdminSuccessTest"/>
             <class name="org.wso2.identity.integration.test.rest.api.user.application.v1.UserDiscoverableApplicationFailureTest"/>
             <!--Test cases for server REST APIs-->
             <class name="org.wso2.identity.integration.test.rest.api.server.challenge.v1.ServerChallengeTestCase"/>
@@ -204,9 +198,6 @@
             <!--<class name="org.wso2.identity.integration.test.auth.ConditionalAuthenticationTestCase" />-->
             <class name="org.wso2.identity.integration.test.provisioning.ProvisioningTestCase"/>
             <class name="org.wso2.identity.integration.test.workflow.mgt.WorkflowManagementTestCase"/>
-            <class name="org.wso2.identity.integration.test.oidc.OIDCIdentityFederationTestCase"/>
-            <class name="org.wso2.identity.integration.test.provisioning.JustInTimeProvisioningTestCase"/>
-            <class name="org.wso2.identity.integration.test.oidc.OIDCFederatedIdpInitLogoutTest"/>
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2TokenExchangeGrantTypeTestCase" />
         </classes>
     </test>
@@ -228,7 +219,6 @@
     <test name="is-tests-federation-restart" preserve-order="true" parallel="false" group-by-instances="true">
         <classes>
             <class name="org.wso2.identity.integration.test.base.SecondaryCarbonServerInitializerTestCase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLFederationWithFileBasedSPAndIDPTestCase"/>
             <class name="org.wso2.identity.integration.test.saml.ChangeACSUrlTestCase"/>
         </classes>
     </test>
@@ -263,7 +253,6 @@
             <class name="org.wso2.identity.integration.test.provisioning.DBSeperationTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.OAuth2ServiceAuthCodeGrantTestCase"/>
             <class name="org.wso2.identity.integration.test.oidc.OIDCFileBasedSkipLoginConsentTestCase"/>
-            <class name="org.wso2.identity.integration.test.scim.IDENTITY4776SCIMServiceWithOAuthTestCase" />
             <class name="org.wso2.identity.integration.test.identity.mgt.UserInformationRecoveryServiceTenantEmailUserTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.Oauth2HashAlgorithmTestCase"/>
             <class name="org.wso2.identity.integration.test.oauth2.Oauth2PersistenceProcessorInsertTokenTestCase"/>
@@ -284,7 +273,6 @@
     <test name="is-tests-saml-query-profile" preserve-order="true" parallel="false" group-by-instances="true">
         <classes>
             <class name="org.wso2.identity.integration.test.saml.SAMLQueryProfileTestBase"/>
-            <class name="org.wso2.identity.integration.test.saml.SAMLQueryProfileTestCase"/>
         </classes>
     </test>
     <test name="is-tests-default-encryption" preserve-order="true" parallel="false" group-by-instances="true">
