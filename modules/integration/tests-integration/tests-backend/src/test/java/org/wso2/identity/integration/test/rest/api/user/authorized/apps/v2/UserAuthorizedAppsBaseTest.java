@@ -89,14 +89,15 @@ public class UserAuthorizedAppsBaseTest extends RESTAPIUserTestBase {
                 .body("client_secret", equalTo(clientSecret));
     }
 
-    public void getTokenFromPasswordGrant(String clientId, String clientSecret) {
+    public void getTokenFromPasswordGrant(String clientId, String clientSecret, String tenantDomain) {
 
         Map<String, String> params = new HashMap<>();
         params.put("grant_type", "password");
         params.put("username", authenticatingUserName);
         params.put("password", authenticatingCredential);
 
-        Response response = getResponseOfFormPostWithAuth(tokenEndpointUri, params, new HashMap<>(), clientId,
+        String tenantedTokenEndpoint = getTenantedQualifiedURL(tokenEndpointUri, tenantDomain);
+        Response response = getResponseOfFormPostWithAuth(tenantedTokenEndpoint, params, new HashMap<>(), clientId,
                 clientSecret);
 
         response.then()
