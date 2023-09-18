@@ -1,28 +1,31 @@
 /*
-*Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
-*
-*WSO2 Inc. licenses this file to you under the Apache License,
-*Version 2.0 (the "License"); you may not use this file except
-*in compliance with the License.
-*You may obtain a copy of the License at
-*
-*http://www.apache.org/licenses/LICENSE-2.0
-*
-*Unless required by applicable law or agreed to in writing,
-*software distributed under the License is distributed on an
-*"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-*KIND, either express or implied.  See the License for the
-*specific language governing permissions and limitations
-*under the License.
-*/
+ *Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ *WSO2 Inc. licenses this file to you under the Apache License,
+ *Version 2.0 (the "License"); you may not use this file except
+ *in compliance with the License.
+ *You may obtain a copy of the License at
+ *
+ *http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing,
+ *software distributed under the License is distributed on an
+ *"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *KIND, either express or implied.  See the License for the
+ *specific language governing permissions and limitations
+ *under the License.
+ */
 
 package org.wso2.identity.integration.common.utils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.automation.engine.configurations.AutomationConfiguration;
+import org.wso2.carbon.automation.engine.configurations.UrlGenerationUtil;
 import org.wso2.carbon.automation.engine.context.AutomationContext;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.engine.context.beans.ContextUrls;
+import org.wso2.carbon.automation.engine.context.beans.Instance;
 import org.wso2.carbon.automation.engine.context.beans.Tenant;
 import org.wso2.carbon.automation.engine.context.beans.User;
 import org.wso2.carbon.automation.engine.frameworkutils.FrameworkPathUtil;
@@ -30,6 +33,7 @@ import org.wso2.carbon.automation.test.utils.common.TestConfigurationProvider;
 import org.wso2.carbon.integration.common.admin.client.AuthenticatorClient;
 import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
 import org.wso2.carbon.utils.CarbonUtils;
+import org.wso2.carbon.utils.multitenancy.MultitenantConstants;
 
 import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
@@ -38,7 +42,7 @@ public class ISIntegrationTest {
 
     public static final String URL_SEPARATOR = "/";
     protected Log log = LogFactory.getLog(getClass());
-    protected AutomationContext isServer;
+    protected static AutomationContext isServer;
     protected String backendURL;
     protected String serverURL;
     protected String sessionCookie;
@@ -47,6 +51,7 @@ public class ISIntegrationTest {
     protected ContextUrls identityContextUrls;
     private static String jdbcClassName = "org.wso2.carbon.user.core.jdbc.JDBCUserStoreManager";
     protected LoginLogoutClient loginLogoutClient;
+    protected static final String PRODUCT_GROUP_PORT_HTTPS = "https";
 
     protected void init() throws Exception {
         init(TestUserMode.SUPER_TENANT_ADMIN);
@@ -141,6 +146,42 @@ public class ISIntegrationTest {
         System.setProperty("javax.net.ssl.trustStorePassword",
                 "wso2carbon");
         System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+    }
+
+    public String getTenantedQualifiedURL(String endpointURL, String tenantDomain) {
+
+        try {
+            if(!tenantDomain.equals(MultitenantConstants.SUPER_TENANT_DOMAIN_NAME)) {
+                String baseURL = getBaseURL();
+                endpointURL = endpointURL.replace(baseURL, baseURL + "/t/" + tenantDomain);
+            }
+            return endpointURL;
+        } catch (XPathExpressionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static String getBaseURL() throws XPathExpressionException {
+
+        String baseURL;
+        Instance instance = isServer.getInstance();
+        String httpsPort = isServer.getInstance().getPorts().get(PRODUCT_GROUP_PORT_HTTPS);
+        String hostName = UrlGenerationUtil.getWorkerHost(instance);
+
+        if(httpsPort != null) {
+            baseURL = "https://" + hostName + ":" + httpsPort;
+        } else {
+            baseURL = "https://" + hostName;
+        }
+        return baseURL;
+    }
+
+    public String getTenantedQualifiedURLWithoutHostName(String endpointURLWithHostname, String tenantDomain) {
+
+        if(!tenantDomain.equals(MultitenantConstants.SUPER_TENANT_DOMAIN_NAME)) {
+            endpointURLWithHostname = "/t/" + tenantDomain + endpointURLWithHostname;
+        }
+        return endpointURLWithHostname;
     }
 
 //    protected void addJDBCUserStore(String dbURI, String driverName, String userName, String password,

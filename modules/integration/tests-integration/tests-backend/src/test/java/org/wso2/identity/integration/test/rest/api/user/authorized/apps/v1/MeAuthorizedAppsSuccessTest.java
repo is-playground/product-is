@@ -55,8 +55,8 @@ public class MeAuthorizedAppsSuccessTest extends UserAuthorizedAppsBaseTest {
         initUrls("me");
         registerApplication(appName1, clientIdApp1, CLIENT_SECRET);
         registerApplication(appName2, clientIdApp2, CLIENT_SECRET);
-        getTokenFromPasswordGrant(clientIdApp1, CLIENT_SECRET);
-        getTokenFromPasswordGrant(clientIdApp2, CLIENT_SECRET);
+        getTokenFromPasswordGrant(clientIdApp1, CLIENT_SECRET, tenant);
+        getTokenFromPasswordGrant(clientIdApp2, CLIENT_SECRET, tenant);
     }
 
     @BeforeMethod(alwaysRun = true)

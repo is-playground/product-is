@@ -57,7 +57,7 @@ public class ApplicationAuthorizedAppsSuccessTest extends UserAuthorizedAppsBase
         super.testInit(API_VERSION, swaggerDefinition, tenant);
         initUrls("me");
         registerApplication(appName1, clientIdApp1, CLIENT_SECRET);
-        getTokenFromPasswordGrant(clientIdApp1, CLIENT_SECRET);
+        getTokenFromPasswordGrant(clientIdApp1, CLIENT_SECRET, tenant);
     }
 
     @BeforeMethod(alwaysRun = true)
