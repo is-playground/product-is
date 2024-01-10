@@ -79,7 +79,7 @@ public class OAuth2TokenRevocationWithMultipleSessionTerminationTestCase extends
     private RequestConfig requestConfig;
     private  HttpClient httpClientForFirstSession;
     private  HttpClient httpClientForSecondSession;
-    private static final String SESSION_API_ENDPOINT = "https://localhost:9853/t/carbon.super/api/users/v1/me/sessions";
+    private static final String SESSION_API_ENDPOINT = "https://localhost:9853/api/users/v1/me/sessions";
     private String applicationId;
 
     @BeforeClass(alwaysRun = true)
@@ -137,7 +137,7 @@ public class OAuth2TokenRevocationWithMultipleSessionTerminationTestCase extends
 
     private void testLoginToFirstSession() throws Exception {
 
-        initiateAuthorizationRequest(httpClientForFirstSession, OAuth2Constant.OAUTH2_SCOPE_OPENID + " " + "random");
+        initiateAuthorizationRequest(httpClientForFirstSession, OAuth2Constant.OAUTH2_SCOPE_OPENID + " " + "device_01");
         authenticateUser(httpClientForFirstSession);
         String authorizationCode = performConsentApproval(httpClientForFirstSession);
         accessTokenInFirstSession = generateAuthzCodeAccessToken(authorizationCode, httpClientForFirstSession);

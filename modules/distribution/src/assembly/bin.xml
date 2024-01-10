@@ -287,12 +287,6 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
         </fileSet>
 
-        <!--copy the callhome jar -->
-        <fileSet>
-            <directory>../callhome/target/callhomeCopied/jar</directory>
-            <outputDirectory>${pom.artifactId}-${pom.version}/repository/components/dropins</outputDirectory>
-        </fileSet>
-
         <!--copy the social authenticator jars Facebook,Google,Windows-Live,Yahoo.-->
         <fileSet>
             <directory>../social-authenticators/target/socialauthenticatorCopied/jar</directory>
@@ -428,10 +422,6 @@
             <outputDirectory>${pom.artifactId}-${pom.version}/lib/</outputDirectory>
         </fileSet>
 
-        <fileSet>
-            <directory>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/dbscripts/bps</directory>
-            <outputDirectory>${pom.artifactId}-${pom.version}/dbscripts/bps</outputDirectory>
-        </fileSet>
         <fileSet>
             <directory>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/data-bridge
@@ -879,6 +869,15 @@
             </source>
             <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
         </file>
+
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/conf/templates/repository/conf/identity/charon-config.xml.j2
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/resources/conf/templates/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+
         <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/scim2-schema-extension.config
@@ -929,52 +928,11 @@
             <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
         </file>
         <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/database/jpadb.mv.db
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/database/</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/datasources/bps-datasources.xml
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/conf/datasources/</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/b4p-coordination-config.xml
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-
-        <file>
-            <source>../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/humantask.xml
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-        <file>
             <source>
                 ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/output-event-adapters.xml
             </source>
             <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
             <fileMode>644</fileMode>
-        </file>
-        <file>
-            <source>
-                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/attachment-management.xml
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
-            <fileMode>644</fileMode>
-        </file>
-        <!-- This is temporary replace bps.xml file (that is copied by feature) by local copy of the file until BPS team fix and release one of issue with bps.xml -->
-        <file>
-            <source>
-                conf/bps/bps.xml
-            </source>
-            <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
         </file>
         <file>
             <source>
@@ -1041,6 +999,34 @@
             <outputDirectory>wso2is-${pom.version}/repository/resources/conf/templates/repository/conf</outputDirectory>
             <fileMode>644</fileMode>
         </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/system-api-resource.xml
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/conf/templates/repository/conf/system-api-resource.xml.j2
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/resources/conf/templates/repository/conf</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/conf/identity/resource-access-control-v2.xml
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
+        <file>
+            <source>
+                ../p2-profile-gen/target/wso2carbon-core-${carbon.kernel.version}/repository/resources/conf/templates/repository/conf/identity/resource-access-control-v2.xml.j2
+            </source>
+            <outputDirectory>wso2is-${pom.version}/repository/resources/conf/templates/repository/conf/identity</outputDirectory>
+            <fileMode>644</fileMode>
+        </file>
 
         <!--In-Place Updates-->
         <file>
@@ -1080,6 +1066,12 @@
             <outputDirectory>wso2is-${pom.version}/repository/conf/</outputDirectory>
             <destName>carbon.properties</destName>
             <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/repository/resources/identity/apple/attestation/apple_attestation_root_ca.pem</source>
+            <outputDirectory>wso2is-${pom.version}/repository/resources/identity/apple/attestation/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>644</fileMode>
         </file>
 
     </files>
